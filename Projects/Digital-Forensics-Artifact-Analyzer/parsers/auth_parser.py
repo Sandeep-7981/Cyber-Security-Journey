@@ -11,6 +11,8 @@ def parse_log(line):
         status = "Failed"
     elif "Successful" in line:
         status = "Accepted"
+    else:
+        status = "Unknown"
   
    #For Username
     match = re.search(r"for (.*?) from", line)
@@ -28,6 +30,5 @@ def parse_log(line):
     }
     return parse_data
 
+   
 
-line = "Jun 07 09:15:10 server sshd[1234]: Failed password for admin from 192.168.1.10 port 54321 ssh2"
-print(parse_log(line))
