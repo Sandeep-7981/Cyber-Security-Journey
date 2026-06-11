@@ -9,8 +9,8 @@ def parse_log(line):
    #For Status
     if "Failed" in line:
         status = "Failed"
-    elif "Successful" in line:
-        status = "Accepted"
+    elif "Successful" in line or "Accepted" in line:
+        status = "Successful"
     else:
         status = "Unknown"
   
