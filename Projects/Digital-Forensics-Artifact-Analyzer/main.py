@@ -1,66 +1,58 @@
-from parsers.auth_parser import parse_log    #Importing from other folders
-failed_attempts = {}                         #Stores as Dictionary fo failed attempts
-successful_attempts = {}                     #Stores as Dictionary fo failed attempts
-total_lines = 0
-THRESHOLD = 5                                #Value for Constant suspicious count
-with open("samples/auth.log", "r") as file:
- for line in file:
-    parsed_data = parse_log(line)            
-    ip = parsed_data["ip"] 
-    total_lines +=1
+import argparse
+from analyzer import analyze_log   #Importing from other folders
+from report_generator import print_report,save_report
 
-    if parsed_data["status"] == "Failed":
-        if ip in failed_attempts:
-            failed_attempts[ip] += 1
-        else:
-            failed_attempts[ip] = 1
-    elif parsed_data["status"] == "Successful":
-        if ip in successful_attempts:
-            successful_attempts[ip] += 1
-        else:
-            successful_attempts[ip] = 1
-total_failed_attempts = sum(failed_attempts.values())
-total_successful_attempts = sum(successful_attempts.values())
 
-sorted_failed = sorted(                                        #Gets sorted failed ID's in desc order
-    failed_attempts.items(),
-    key=lambda x: x[1],
-    reverse=True
+parser = argparse.ArgumentParser(
+    description="Digital Forensics Artifact Analyzer"
+)
+
+parser.add_argument("logfile",help="Path to authentication log file")
+
+parser.add_argument(
+    "--savefile",
+    default="reports/report.txt",
+    help="Output report file"
 )
 
 
-#Report Printing
-print("=" * 40)
-print("DIGITAL FORENSICS ARTIFACT ANALYZER")
-print("=" * 40)
-print()
-print("Suspicious Failed Login Report")
-print()
-print(f"{'IP Address':<20}{'Failed Attempts'}")
-print("-" * 35)
-for ip, count in failed_attempts.items():
-   print(f"{ip:<20}{count}")
+parser.add_argument(
+    "--top_n",
+    type=int,
+    default=3,
+    help="Number of top failed IPs to display"
+)
 
-print("-" * 35)
-print()
-print("="*10,"Log Summary","="*10,"\n")
-print("Total Lines :",total_lines)
-print("Failed Logins :",total_failed_attempts)
-print("Successful Logins :",total_successful_attempts)
-print("Unique Failed IPs :",len(failed_attempts))
-print("\nTop Failed Attempts :")
-for ip, count in sorted_failed[:3]:
-    print(f"{ip:<20} -> {count}")
+parser.add_argument(
+    "--threshold",
+    type=int,
+    default=5,
+    help="Minimum failed attempts to mark as suspicious"
+)
 
-print(f"\nSuspicious IPs (>= {THRESHOLD} Attempts)")
+args = parser.parse_args()
 
-for ip, count in sorted_failed:
-    if count < THRESHOLD:
-        break
-    print(f"{ip:<20} -> {count}")
+try:
+    results = analyze_log(args.logfile)
 
-print()
-print("-" * 35)
+    print_report(
+        results,
+        threshold=args.threshold,
+        top_n=args.top_n
+    )
+    save_report(
+        results,
+        filename=args.savefile,
+        threshold=args.threshold,
+        top_n=args.top_n
+    )
+except FileNotFoundError as e:
+    print(f"Error: '{e}' not found.")
+
+except Exception as e:
+    print(f"Unexpected error: {e}")
+
+
 
 
 

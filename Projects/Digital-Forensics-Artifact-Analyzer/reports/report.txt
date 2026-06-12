@@ -1,0 +1,25 @@
+========================================
+DIGITAL FORENSICS ARTIFACT ANALYZER
+========================================
+
+Suspicious Failed Login Report:
+
+IP Address          Failed Attempts
+-----------------------------------
+192.168.1.10        18
+172.16.5.2          2
+-----------------------------------
+
+========== Log Summary ==========
+
+Total Lines : 28
+Failed Logins : 20
+Successful Logins : 8
+Unique Failed IPs : 2
+
+Top Failed Attempts :
+192.168.1.10         -> 18
+172.16.5.2           -> 2
+
+Suspicious IPs (>= 5 Attempts)
+192.168.1.10         -> 18
