@@ -10,13 +10,15 @@ def print_report(results,threshold,top_n):
     print("Suspicious Failed Login Report:")
     print()
 
-    print(f"{'IP Address':<20}{'Failed Attempts'}")
-    print("-" * 35)
-
+    print(f"{'IP Address':<20}{'Failed Attempts':<20}{'Unique Users':<20}{'Enumeration'}")
+    print("-" * 75)
+    
     for ip, count in results["failed_attempts"].items():
-        print(f"{ip:<20}{count}")
+        unique_users = len(results["failed_users"][ip])
+        Enumeration = "YES" if unique_users >= 3 else "NO"
+        print(f"{ip:<20}{count:<20}{unique_users:<20}{Enumeration}")
 
-    print("-" * 35)
+    print("-" * 75)
 
     print()
     print("=" * 10, "Log Summary", "=" * 10)
@@ -40,12 +42,26 @@ def print_report(results,threshold,top_n):
             break
         found = True
         print(f"{ip:<20} -> {count}")
+    print()
     if not found:
-      print("No suspicious IPs found.")
+      print("No suspicious IPs found.\n")
 
+    print("="*35)
+    print("POTENTIAL ACCOUNT COMPROMISE ALERTS")
+    print("="*35,"\n")
+    print(f"{'IP Address':<20}{'User name':<20}{'Time Stamp'}")
+    print("-" * 55)
+    for alert in results["success_after_failure"]:
+        found = True
+        print(f'{alert["ip"]:<20}{alert["username"]:<20}{alert["timestamp"]:<20}')
+    if not found:
+        print("No alerts detected.\n")   
+    
+    
 
 
 def save_report(results, filename, threshold=5, top_n=3):
+
     os.makedirs(os.path.dirname(filename), exist_ok=True)          #if directory doesn't exist create
     with open(filename, "w") as file:
 
@@ -57,13 +73,19 @@ def save_report(results, filename, threshold=5, top_n=3):
         file.write("Suspicious Failed Login Report:\n")
         file.write("\n")
 
-        file.write(f"{'IP Address':<20}{'Failed Attempts'}\n")
-        file.write("-" * 35+"\n")
+        
 
+        file.write(f"{'IP Address':<20}{'Failed Attempts':<20}{'Unique_IPs':<20}{'Enumeration'}\n")
+        file.write("-" * 75+"\n")
+    
         for ip, count in results["failed_attempts"].items():
-            file.write(f"{ip:<20}{count}\n")
-
-        file.write("-" * 35)
+            unique_users = len(results["failed_users"][ip])
+            Enumeration = "YES" if unique_users >= 3 else "NO"
+            file.write(f"{ip:<20}{count:<20}{unique_users:<20}{Enumeration}\n")
+            
+ 
+        file.write("-" * 75)
+        
 
         file.write("\n\n")
         file.write("=" * 10 + " Log Summary " + "=" * 10 + "\n")

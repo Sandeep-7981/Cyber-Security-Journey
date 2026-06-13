@@ -10,7 +10,7 @@ Jun 07 09:17:20 server sshd[1237]: Failed password for test from 172.16.5.2 port
 Jun 07 09:18:00 server sshd[1238]: Failed password for admin from 192.168.1.10 port 54323 ssh2
 Jun 11 10:01:22 server sshd[1234]: Failed password for root from 192.168.1.10 port 22 ssh2
 Jun 11 10:01:28 server sshd[1235]: Failed password for admin from 192.168.1.10 port 22 ssh2
-Jun 11 10:01:35 server sshd[1236]: Successful password for ubuntu from 10.0.0.5 port 22 ssh2
+Jun 11 10:01:35 server sshd[1236]: Successful password for ubuntu from 192.168.1.10 port 22 ssh2
 Jun 11 10:01:22 server sshd[1234]: Failed password for root from 192.168.1.10 port 22 ssh2
 Jun 11 10:01:28 server sshd[1235]: Failed password for admin from 192.168.1.10 port 22 ssh2
 Jun 11 10:01:35 server sshd[1236]: Successful password for ubuntu from 10.0.0.5 port 22 ssh2
