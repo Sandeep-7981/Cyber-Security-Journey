@@ -1,211 +1,194 @@
 # 🔍 Digital Forensics Artifact Analyzer
 
-A modular Python command-line tool that parses authentication logs, analyzes login activity, identifies suspicious IP addresses, and generates structured forensic reports.
-
-Built to demonstrate practical Python programming and cybersecurity automation concepts through a real-world Digital Forensics & Incident Response (DFIR) use case.
+> **A Python-based Digital Forensics & Incident Response (DFIR) tool for analyzing Linux SSH authentication logs, detecting suspicious login activity, and generating structured investigation reports.**
 
 ---
 
-## ✨ Features
+## 📖 Overview
 
-- 📄 Parse authentication log files
-- 🚨 Detect and count failed login attempts
-- ✅ Track successful login attempts
-- 📊 Generate authentication statistics
-- 🏆 Display Top-N IP addresses with the highest failed login attempts
-- ⚠️ Identify suspicious IPs using configurable thresholds
-- 📝 Generate formatted forensic reports
-- 🖥️ Command-line interface with customizable options
-- 📁 Automatically creates the report directory if it does not exist
+Digital Forensics Artifact Analyzer automates the analysis of Linux SSH authentication logs to identify security threats such as brute-force attacks, username enumeration attempts, and potential account compromise events.
+
+Instead of manually reviewing hundreds of log entries, the tool extracts relevant authentication events, correlates suspicious patterns, and generates an investigation report with actionable security recommendations.
+
+This project demonstrates practical Python programming, log analysis, and Digital Forensics & Incident Response (DFIR) concepts.
 
 ---
 
-## 📂 Project Structure
+# 🚀 Quick Start
 
+## Clone the repository
+
+```bash
+git clone https://github.com/<your-username>/Digital-Forensics-Artifact-Analyzer.git
+cd Digital-Forensics-Artifact-Analyzer
 ```
+
+## Run the application
+
+```bash
+python main.py <log_file_path>
+```
+
+### Example
+
+```bash
+python main.py sample_logs/sample_auth.log
+```
+
+### Optional Arguments
+
+| Argument      | Description                                                   |
+| ------------- | ------------------------------------------------------------- |
+| `--threshold` | Minimum failed login attempts to classify an IP as suspicious |
+| `--top_n`     | Number of top failed IP addresses to display                  |
+| `--savefile`  | Output path for the generated investigation report            |
+
+### Example
+
+```bash
+python main.py sample_logs/sample_auth.log \
+    --threshold 5 \
+    --top_n 3 \
+    --savefile reports/investigation_report.txt
+```
+
+---
+
+# ✨ Features
+
+## Authentication Analysis
+
+* SSH Failed Login Detection
+* SSH Successful Login Detection
+* Configurable Suspicious IP Threshold
+
+## Threat Detection
+
+* Brute Force Attack Detection
+* Username Enumeration Detection
+* Success-after-Failure Correlation
+
+## Investigation Support
+
+* Structured Log Summary
+* Top Failed Attempts Analysis
+* Suspicious IP Identification
+* Potential Account Compromise Alerts
+* Recent Event Timeline (Latest 5 Events)
+* Security Analyst Recommendations
+* Automated Investigation Report Generation
+
+---
+
+# 📂 Project Structure
+
+```text
 Digital-Forensics-Artifact-Analyzer/
-│
-├── main.py
-├── analyzer.py
-├── report_generator.py
+
+├── analyzers/
+│   └── analyzer.py
 │
 ├── parsers/
 │   └── auth_parser.py
 │
-├── sample_logs/
-│   └── auth.log
-│
 ├── reports/
-│   └── report.txt
 │
+├── sample_logs/
+│
+├── report.py
+├── main.py
 ├── README.md
-├── requirements.txt
-└── LICENSE
+└── requirements.txt
 ```
 
 ---
 
-## 🛠️ Technologies Used
+# 📊 Detection Capabilities
 
-- Python 3
-- argparse
-- File Handling
-- Dictionaries & Lists
-- Sorting Algorithms
-- Modular Programming
-
----
-
-## 🚀 Getting Started
-
-### Clone the repository
-
-```bash
-git clone https://github.com/<your-username>/Digital-Forensics-Artifact-Analyzer.git
-
-cd Digital-Forensics-Artifact-Analyzer
-```
-
-### Run the analyzer
-
-```bash
-python main.py sample_logs/auth.log
-```
+| Capability                       | Status |
+| -------------------------------- | :----: |
+| Failed Login Detection           |    ✅   |
+| Successful Login Detection       |    ✅   |
+| Suspicious IP Analysis           |    ✅   |
+| Brute Force Detection            |    ✅   |
+| Username Enumeration Detection   |    ✅   |
+| Success-after-Failure Detection  |    ✅   |
+| Event Timeline Reconstruction    |    ✅   |
+| Investigation Report Generation  |    ✅   |
+| Security Analyst Recommendations |    ✅   |
 
 ---
 
-## ⚙️ Command-Line Options
+# 📋 Generated Report
 
-| Option | Description | Default |
-|------------|------------------------------|-----------|
-| `logfile` | Path to authentication log file | Required |
-| `--threshold` | Minimum failed attempts to mark an IP as suspicious | `5` |
-| `--top_n` | Number of top failed IPs to display | `3` |
-| `--savefile` | Output report file location | `reports/report.txt` |
+The generated investigation report includes:
 
----
-
-## 💻 Example Usage
-
-Basic execution
-
-```bash
-python main.py sample_logs/auth.log
-```
-
-Display Top 5 failed IPs
-
-```bash
-python main.py sample_logs/auth.log --top_n 5
-```
-
-Set suspicious threshold
-
-```bash
-python main.py sample_logs/auth.log --threshold 10
-```
-
-Save report to a custom location
-
-```bash
-python main.py sample_logs/auth.log --savefile reports/custom_report.txt
-```
+* Suspicious Failed Login Analysis
+* Log Summary
+* Top Failed Attempts
+* Suspicious IP Analysis
+* Potential Account Compromise Alerts
+* Recent Event Timeline
+* Security Analyst Recommendations
 
 ---
 
-## 📊 Sample Output
+# 🛠 Technologies Used
 
-```
-========================================
-DIGITAL FORENSICS ARTIFACT ANALYZER
-========================================
-
-Suspicious Failed Login Report
-
-IP Address          Failed Attempts
------------------------------------
-192.168.1.10        8
-10.0.0.5            4
-172.16.0.2          2
-
-========== Log Summary ==========
-
-Total Lines : 250
-Failed Logins : 14
-Successful Logins : 236
-Unique Failed IPs : 3
-
-Top Failed Attempts :
-
-192.168.1.10      -> 8
-10.0.0.5          -> 4
-172.16.0.2        -> 2
-
-Suspicious IPs (>= 5 Attempts)
-
-192.168.1.10      -> 8
-```
+* Python 3
+* Regular Expressions (`re`)
+* File Handling
+* Dictionaries
+* Sets
+* Command-Line Arguments (`argparse`)
+* Modular Programming
 
 ---
 
-## 🎯 Skills Demonstrated
+# 🎯 Skills Demonstrated
 
-This project showcases practical experience with:
+This project demonstrates practical experience with:
 
-- Python Programming
-- Command-Line Interface (CLI) Development
-- Log Parsing
-- Data Analysis
-- File Handling
-- Modular Software Design
-- Exception Handling
-- Digital Forensics Fundamentals
-- Cybersecurity Automation
+* Python Automation
+* Digital Forensics Fundamentals
+* Linux SSH Authentication Log Analysis
+* Security Event Correlation
+* Incident Investigation
+* Threat Detection Logic
+* Report Generation
+* Modular Software Design
 
----
-
-## 🔮 Future Enhancements
-
-- JSON report export
-- CSV report export
-- Support for Windows Event Logs
-- Apache/Nginx log analysis
-- Timeline reconstruction
-- Interactive dashboard
-- IP geolocation enrichment
-- Risk scoring for suspicious activity
 
 ---
 
-## 💡 Use Cases
+# 🔮 Future Enhancements
 
-- Authentication log analysis
-- Brute-force attack detection
-- Digital forensics practice
-- Security monitoring
-- Python cybersecurity portfolio project
-
----
-
-## 🤝 Contributing
-
-Contributions and suggestions are welcome.
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Open a Pull Request
+* Multi-parser architecture
+* Sudo log parser
+* CRON log parser
+* Apache/Nginx log parser
+* JSON/CSV/PDF report export
+* IP reputation enrichment
+* Interactive dashboard
 
 ---
 
-## 📜 License
+# 🤝 Contributing
 
-This project is licensed under the MIT License.
+Contributions and suggestions are welcome. Feel free to fork the repository, improve the project, and submit a pull request.
 
 ---
 
-## ⭐ Why This Project?
+# 📄 License
 
-This project was developed as part of a hands-on cybersecurity learning journey to strengthen practical skills in Python automation, log analysis, and Digital Forensics & Incident Response (DFIR).
+This project is released under the MIT License.
 
-It emphasizes clean code organization, modular design, and real-world security use cases while serving as a foundation for future forensic analysis tools.
+---
+
+# 👨‍💻 Author
+
+**Sandeep B**
+
+Cybersecurity • Cloud Security • Digital Forensics Enthusiast
+
+Developed as a portfolio project to demonstrate practical cybersecurity, Python automation, and Digital Forensics & Incident Response (DFIR) concepts.
