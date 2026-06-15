@@ -2,33 +2,29 @@ import re
 
 def parse_log(line):
 
-    #For time_stamp
+    # Timestamp
     parts = line.split()
     time_stamp = " ".join(parts[:3])
-   
-   #For Status
+
+    # Status
     if "Failed" in line:
         status = "Failed"
     elif "Successful" in line or "Accepted" in line:
         status = "Successful"
     else:
         status = "Unknown"
-  
-   #For Username
+
+    # Username
     match = re.search(r"for (.*?) from", line)
-    username = match.group(1)
+    username = match.group(1) if match else "Unknown"
 
-    #For IP address
-    ip = re.search(r"\d+\.\d+\.\d+\.\d+",line).group(0)
+    # IP Address
+    ip_match = re.search(r"\d+\.\d+\.\d+\.\d+", line)
+    ip = ip_match.group(0) if ip_match else "Unknown"
 
-    #Dictionary
-    parse_data = {
-        "timestamp" : time_stamp,
-        "status" : status,
-        "username" : username,
-        "ip" : ip
+    return {
+        "timestamp": time_stamp,
+        "status": status,
+        "username": username,
+        "ip": ip
     }
-    return parse_data
-
-   
-

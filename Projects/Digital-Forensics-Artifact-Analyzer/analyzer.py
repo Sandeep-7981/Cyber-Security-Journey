@@ -12,12 +12,14 @@ def analyze_log(file_path):
     total_lines = 0
     failed_ips = set()
     success_after_failure = []
+    event_timeline = []
 
     with open(file_path, "r") as file:
 
         for line in file:
 
             parsed_data = parse_log(line)
+            event_timeline.append(parsed_data)
 
             ip = parsed_data["ip"]
             username = parsed_data["username"]
@@ -51,7 +53,9 @@ def analyze_log(file_path):
         key=lambda item: item[1],
         reverse=True
     )
-    print(success_after_failure)
+    
+   
+    event_timeline = sorted(event_timeline,key=lambda event: event["timestamp"])
     return {
         "total_lines": total_lines,
         "failed_attempts": failed_attempts,
@@ -60,5 +64,6 @@ def analyze_log(file_path):
         "total_successful": total_successful,
         "sorted_failed": sorted_failed,
         "failed_users" : failed_users,
-        "success_after_failure" : success_after_failure
+        "success_after_failure" : success_after_failure,
+        "event_timeline": event_timeline
     }
