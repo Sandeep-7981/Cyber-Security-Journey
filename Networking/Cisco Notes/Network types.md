@@ -16,20 +16,20 @@ A **PAN** is a small network that connects personal devices within a short dista
 
 ### Examples
 
-* Mobile ↔ Bluetooth Earbuds
-* Laptop ↔ Wireless Mouse
-* Smartwatch ↔ Phone
+- Mobile ↔ Bluetooth Earbuds
+- Laptop ↔ Wireless Mouse
+- Smartwatch ↔ Phone
 
 ### Advantages
 
-* Low cost
-* Easy to set up
-* Low power consumption
+- Low cost
+- Easy to set up
+- Low power consumption
 
 ### Disadvantages
 
-* Very short range
-* Limited number of devices
+- Very short range
+- Limited number of devices
 
 ```
  Phone
@@ -51,20 +51,20 @@ A **LAN** connects devices within a small geographical area such as a home, scho
 
 ### Examples
 
-* Home Wi-Fi
-* College Computer Lab
-* Office Network
+- Home Wi-Fi
+- College Computer Lab
+- Office Network
 
 ### Advantages
 
-* High speed
-* Low cost
-* Easy resource sharing
+- High speed
+- Low cost
+- Easy resource sharing
 
 ### Disadvantages
 
-* Limited coverage
-* Requires maintenance
+- Limited coverage
+- Requires maintenance
 
 ```
           Switch
@@ -83,24 +83,24 @@ A WLAN is a LAN that uses wireless communication instead of cables.
 
 ### Examples
 
-* Home Wi-Fi
-* College Wi-Fi
-* Coffee Shop Wi-Fi
+- Home Wi-Fi
+- College Wi-Fi
+- Coffee Shop Wi-Fi
 
 ### Advantages
 
-* Mobility
-* No cables required
-* Easy installation
+- Mobility
+- No cables required
+- Easy installation
 
 ### Disadvantages
 
-* Lower security compared to wired LAN
-* Signal interference
+- Lower security compared to wired LAN
+- Signal interference
 
 ```
         Wi-Fi Router
-        /    |    \
+        /    |
     Laptop Phone Tablet
 ```
 
@@ -114,9 +114,9 @@ A CAN connects multiple LANs within a campus or organization.
 
 ### Examples
 
-* University Campus
-* Corporate Campus
-* Hospital Buildings
+- University Campus
+- Corporate Campus
+- Hospital Buildings
 
 ```
  Building A
@@ -136,19 +136,19 @@ A MAN connects multiple LANs across a city or metropolitan area.
 
 ### Examples
 
-* City Government Network
-* Cable TV Network
-* Large ISP Network
+- City Government Network
+- Cable TV Network
+- Large ISP Network
 
 ### Advantages
 
-* Covers larger area than LAN
-* High-speed connectivity
+- Covers larger area than LAN
+- High-speed connectivity
 
 ### Disadvantages
 
-* Higher setup cost
-* Complex management
+- Higher setup cost
+- Complex management
 
 ```
 Office A ─── Office B ─── Office C
@@ -165,20 +165,20 @@ A WAN connects networks across countries or continents.
 
 ### Examples
 
-* The Internet
-* Bank Networks
-* International Company Networks
+- The Internet
+- Bank Networks
+- International Company Networks
 
 ### Advantages
 
-* Global communication
-* Resource sharing across locations
+- Global communication
+- Resource sharing across locations
 
 ### Disadvantages
 
-* Higher latency
-* Expensive infrastructure
-* More security challenges
+- Higher latency
+- Expensive infrastructure
+- More security challenges
 
 ```
 India Office
@@ -297,12 +297,12 @@ A Campus Area Network (CAN), which connects multiple LANs across the campus.
 
 # ⚡ Quick Revision
 
-* PAN → Personal devices
-* LAN → Home/Office
-* WLAN → Wireless LAN
-* CAN → Campus
-* MAN → City
-* WAN → Country/World
+- PAN → Personal devices
+- LAN → Home/Office
+- WLAN → Wireless LAN
+- CAN → Campus
+- MAN → City
+- WAN → Country/World
 
 Coverage:
 
@@ -323,7 +323,3 @@ PAN < LAN < CAN < MAN < WAN
 ✅ CAN is widely used in universities.
 
 ✅ Internet is the best example of a WAN.
-
----
-
-**Next File:** `03_Network_Components.md`

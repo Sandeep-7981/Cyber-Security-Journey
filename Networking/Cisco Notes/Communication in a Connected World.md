@@ -1,405 +1,167 @@
-# 🌐 03. Network Components
+# 🌐 Communication in a Connected World
 
-## 📖 Definition
+## 📖 Network
 
-**Network Components** are the hardware devices and interfaces that work together to enable communication between devices in a network.
+**Definition**
 
-**Simple:** They are the building blocks of every computer network.
+A computer network is a collection of interconnected devices that communicate and share data, resources, and services.
 
----
+Examples
 
-# 📌 Types of Network Components
-
-Network components are mainly divided into:
-
-1. End Devices
-2. Intermediary Devices
-3. Network Media
-
-```text
-                Network
-                   │
-     ┌─────────────┼─────────────┐
-     │             │             │
-End Devices   Intermediary   Network Media
-```
+- Home Wi-Fi
+- College Lab
+- Office Network
 
 ---
 
-# 💻 1. End Devices
+## 📌 Why Networking Matters
 
-End devices are the source or destination of data.
-
-### Examples
-
-* Desktop
-* Laptop
-* Mobile Phone
-* Printer
-* Server
-* IP Camera
-
-### Functions
-
-* Send data
-* Receive data
-* Access network services
-
-```text
-Laptop ───── Switch ───── Server
-```
+- Enables communication between devices
+- Resource sharing
+- Internet connectivity
+- Cloud computing
+- Remote collaboration
 
 ---
 
-# 🔀 2. Switch
+## 🌍 Network Types
 
-## Definition
+### PAN (Personal Area Network)
 
-A **Switch** is a Layer 2 networking device that connects multiple devices within a Local Area Network (LAN) and forwards data using **MAC addresses**.
+- Covers a few meters
+- Uses Bluetooth or USB
 
-### Key Points
+Examples
 
-* Operates at OSI Layer 2
-* Uses MAC Address Table
-* Reduces collisions
-* Intelligent forwarding
+- Smartwatch
+- Wireless Earbuds
 
-### Example
+### LAN (Local Area Network)
 
-```text
-          Switch
-      ┌────┼────┐
-      │    │    │
-    PC1   PC2  PC3
-```
+- Covers a building or office
+- High speed
+- Low cost
 
-### Advantages
+Examples
 
-* Fast communication
-* Better performance
-* Secure compared to hub
+- School Lab
+- Home Network
 
----
+### WLAN
 
-# 🌍 3. Router
+Wireless version of LAN using Wi-Fi.
 
-## Definition
+### MAN (Metropolitan Area Network)
 
-A **Router** connects different networks and forwards packets using **IP addresses**.
+Connects networks across a city.
 
-### Key Points
+### WAN (Wide Area Network)
 
-* Operates at OSI Layer 3
-* Connects LAN to WAN
-* Chooses the best path
-* Provides Internet access
+Connects networks across countries.
 
-### Example
+Example
 
-```text
-Home Network
-      │
-   Router
-      │
-  Internet
-```
-
-### Real-Life Example
-
-Your home Wi-Fi router connects your devices to the Internet.
+- Internet
 
 ---
 
-# 📡 4. Hub
+## 📡 Data Transmission
 
-## Definition
+Data transmission is the process of transferring data between devices.
 
-A **Hub** is a basic networking device that broadcasts incoming data to every connected device.
+### Modes
 
-### Key Points
+### Simplex
 
-* Operates at Physical Layer (Layer 1)
-* No intelligence
-* Broadcasts data to all ports
+One-way communication.
 
-### Example
+Example Keyboard → Computer
 
-```text
-         Hub
-     ┌────┼────┐
-     │    │    │
-   PC1   PC2  PC3
+### Half Duplex
 
-(All devices receive the data)
-```
+Both directions but one at a time.
 
-### Disadvantages
+Example Walkie-Talkie
 
-* Slow
-* More collisions
-* Less secure
+### Full Duplex
+
+Both directions simultaneously.
+
+Example Mobile Call
 
 ---
 
-# 🌉 5. Bridge
+## 📶 Bandwidth
 
-## Definition
+Maximum amount of data that can be transferred.
 
-A **Bridge** connects two LAN segments and filters traffic using MAC addresses.
+Unit
 
-### Uses
+- Mbps
+- Gbps
 
-* Reduces unnecessary traffic
-* Improves network performance
+Example
 
-```text
-LAN A ─── Bridge ─── LAN B
-```
+100 Mbps Internet Plan
 
 ---
 
-# 🚪 6. Gateway
+## 🚀 Throughput
 
-## Definition
+Actual amount of data transferred successfully.
 
-A **Gateway** connects networks that use different communication protocols.
+Usually
 
-### Example
-
-A company network communicating with a cloud service.
-
-### Key Point
-
-Acts as a translator between different networks.
+Throughput ≤ Bandwidth
 
 ---
 
-# 📞 7. Modem
+## 🧠 Memory Trick
 
-## Definition
+Bandwidth = Width of Highway
 
-A **Modem (Modulator-Demodulator)** converts digital signals into analog signals and vice versa.
-
-### Functions
-
-* Connects home network to ISP
-* Enables Internet access
-
-```text
-Computer
-     │
- Router
-     │
- Modem
-     │
- ISP
-```
+Throughput = Cars Actually Moving
 
 ---
 
-# 📶 8. Access Point (AP)
+## 📋 Important Points
 
-## Definition
+✓ PAN < LAN < MAN < WAN
 
-An **Access Point** provides wireless connectivity to devices.
+✓ Full Duplex is the fastest communication mode.
 
-### Example
+✓ Fiber Optic provides the highest speed.
 
-Office Wi-Fi
-
-```text
-        Access Point
-         /    |    \
-   Laptop  Phone  Tablet
-```
-
-### Advantages
-
-* Wireless communication
-* Easy mobility
+✓ Throughput is always less than or equal to bandwidth.
 
 ---
 
-# 💳 9. Network Interface Card (NIC)
+## 🎤 Interview Q&A
 
-## Definition
+### What is a computer network?
 
-A **NIC** is a hardware component that enables a device to connect to a network.
+A collection of interconnected devices that communicate and share resources.
 
-### Types
+### Difference between bandwidth and throughput?
 
-* Wired NIC
-* Wireless NIC
+Bandwidth is the maximum capacity of a network, whereas throughput is the actual data transferred.
 
-### Example
+### What is Full Duplex?
 
-Ethernet Port in a Desktop Computer
-
----
-
-# 🔥 10. Firewall
-
-## Definition
-
-A **Firewall** monitors and filters incoming and outgoing network traffic based on security rules.
-
-### Functions
-
-* Blocks unauthorized access
-* Protects the network
-* Filters malicious traffic
-
-```text
-Internet
-    │
-Firewall
-    │
-Office Network
-```
+A communication mode where both devices can send and receive data simultaneously.
 
 ---
 
-# 📡 11. Server
+## ⚡ Quick Revision
 
-## Definition
+Network Types
 
-A **Server** is a computer that provides services or resources to other devices (clients).
+PAN → LAN → MAN → WAN
 
-### Examples
+Communication Modes
 
-* Web Server
-* File Server
-* Mail Server
-* Database Server
+Simplex → Half Duplex → Full Duplex
 
-```text
-           Server
-        /    |    \
-     PC1   PC2   PC3
-```
+Performance
 
----
-
-# 📊 Component Comparison
-
-| Device       | Layer       | Uses                         |
-| ------------ | ----------- | ---------------------------- |
-| Hub          | Layer 1     | Broadcast data               |
-| Switch       | Layer 2     | Connects LAN devices         |
-| Router       | Layer 3     | Connects different networks  |
-| Bridge       | Layer 2     | Connects LAN segments        |
-| Gateway      | Multiple    | Connects different protocols |
-| Access Point | Layer 2     | Wireless connectivity        |
-| Firewall     | Layer 3/4/7 | Network security             |
-
----
-
-# 🧠 Memory Trick
-
-```text
-Hub       → Repeats Everything
-
-Switch    → Thinks Before Sending
-
-Router    → Finds Best Path
-
-Firewall  → Security Guard
-
-Gateway   → Translator
-
-Access Point → Wi-Fi Provider
-
-NIC        → Network Entry Ticket
-```
-
----
-
-# 🎤 Interview Q&A
-
-### Q1. What is a Switch?
-
-**Answer:**
-
-A switch is a Layer 2 networking device that connects devices within a LAN and forwards data using MAC addresses.
-
----
-
-### Q2. What is the difference between a Hub and a Switch?
-
-| Hub             | Switch                         |
-| --------------- | ------------------------------ |
-| Broadcasts data | Sends data only to destination |
-| Layer 1         | Layer 2                        |
-| Slower          | Faster                         |
-| Less secure     | More secure                    |
-
----
-
-### Q3. What is a Router?
-
-**Answer:**
-
-A router is a Layer 3 device that connects different networks and forwards packets using IP addresses.
-
----
-
-### Q4. What is a Firewall?
-
-**Answer:**
-
-A firewall is a security device that monitors and filters incoming and outgoing network traffic.
-
----
-
-### Q5. What is an Access Point?
-
-**Answer:**
-
-An access point provides wireless connectivity to devices using Wi-Fi.
-
----
-
-### Q6. What is the function of a NIC?
-
-**Answer:**
-
-A NIC enables a computer or device to connect to a network and communicate with other devices.
-
----
-
-# ⚡ Quick Revision
-
-```text
-Hub         → Layer 1 → Broadcast
-
-Switch      → Layer 2 → MAC Address
-
-Router      → Layer 3 → IP Address
-
-Bridge      → Connects LAN Segments
-
-Gateway     → Connects Different Networks
-
-Firewall    → Security
-
-Access Point→ Wi-Fi
-
-NIC         → Network Connection
-```
-
----
-
-# 📌 Exam Tips
-
-✅ Switch uses **MAC Address**.
-
-✅ Router uses **IP Address**.
-
-✅ Hub broadcasts to every device.
-
-✅ Firewall protects the network.
-
-✅ NIC is required for network communication.
-
-✅ Access Point provides wireless connectivity.
-
+Bandwidth ≥ Throughput
