@@ -1,0 +1,375 @@
+# Module 13 - The ARP Process
+
+## What is ARP?
+
+**ARP (Address Resolution Protocol)** is a Layer 2 protocol used to find the **MAC Address** of a device when its **IP Address** is already known.
+
+Since Ethernet communication happens using **MAC addresses**, devices must first know the destination MAC address before sending frames.
+
+> **IP Address** = Logical Address (Layer 3)
+> **MAC Address** = Physical Address (Layer 2)
+
+---
+
+# Why is ARP Needed?
+
+Suppose:
+
+```
+PC A
+IP : 192.168.1.10
+MAC: AA-AA-AA-AA-AA-AA
+```
+
+wants to send data to
+
+```
+PC B
+IP : 192.168.1.20
+MAC: BB-BB-BB-BB-BB-BB
+```
+
+PC A knows the destination IP but Ethernet cannot send data using only an IP address.
+
+It must first know the destination MAC address.
+
+ARP solves this problem.
+
+---
+
+# MAC Address vs IP Address
+
+| IP Address                        | MAC Address                 |
+| --------------------------------- | --------------------------- |
+| Logical Address                   | Physical Address            |
+| Layer 3                           | Layer 2                     |
+| Can change                        | Usually fixed               |
+| Used for routing between networks | Used within a local network |
+
+Example:
+
+```
+IP  : 192.168.1.25
+MAC : 48:D2:24:AB:91:FE
+```
+
+---
+
+# ARP Cache
+
+Every computer stores recently learned MAC addresses in an **ARP Cache**.
+
+Example:
+
+| IP Address   | MAC Address       |
+| ------------ | ----------------- |
+| 192.168.1.1  | 00:15:5D:21:AB:CD |
+| 192.168.1.20 | 84:3A:4B:76:98:10 |
+
+Before sending an ARP request, the device first checks its ARP cache.
+
+If an entry exists, no ARP request is needed.
+
+---
+
+# The ARP Process
+
+## Step 1 – Check ARP Cache
+
+PC A wants to send data to:
+
+```
+192.168.1.20
+```
+
+* If the MAC address is already stored, communication starts immediately.
+* Otherwise, PC A sends an ARP Request.
+
+---
+
+## Step 2 – ARP Request (Broadcast)
+
+PC A sends:
+
+```
+Who has 192.168.1.20?
+Tell 192.168.1.10
+```
+
+The ARP Request is sent to the broadcast MAC address:
+
+```
+FF:FF:FF:FF:FF:FF
+```
+
+Every device in the LAN receives this request.
+
+---
+
+## Step 3 – Device Verification
+
+Each device checks:
+
+```
+Is this my IP address?
+```
+
+* If **No** → Ignore the request.
+* If **Yes** → Send an ARP Reply.
+
+---
+
+## Step 4 – ARP Reply (Unicast)
+
+PC B replies only to PC A:
+
+```
+192.168.1.20 is at
+
+BB-BB-BB-BB-BB-BB
+```
+
+Unlike the request, the reply is **Unicast**.
+
+---
+
+## Step 5 – Cache Update
+
+PC A stores the mapping:
+
+```
+192.168.1.20
+
+↓
+
+BB-BB-BB-BB-BB-BB
+```
+
+inside its ARP Cache.
+
+Future communication becomes faster because another ARP request is unnecessary.
+
+---
+
+# Broadcast Containment
+
+ARP Requests are **Broadcasts**.
+
+Broadcasts do **NOT** cross routers.
+
+```
+LAN 1
+
+PC A ---- Switch ---- Router
+
+LAN 2
+
+Router ---- Switch ---- PC B
+```
+
+If the destination is on another network, the sender does **not** ARP for the remote device.
+
+Instead, it ARPs for the **Default Gateway**.
+
+---
+
+# Communication Within the Same Network
+
+```
+PC A
+192.168.1.10
+
+      │
+
+ARP Request (Broadcast)
+
+      │
+
+PC B
+192.168.1.20
+
+      │
+
+ARP Reply (Unicast)
+
+      │
+
+Communication Begins
+```
+
+---
+
+# Communication Across Different Networks
+
+Suppose:
+
+```
+PC A
+192.168.1.10
+```
+
+wants to communicate with:
+
+```
+8.8.8.8
+```
+
+Since the destination is outside the local network:
+
+* PC A does **not** ARP for `8.8.8.8`.
+* PC A ARPs for the **Default Gateway** (e.g., `192.168.1.1`).
+* The router replies with its MAC address.
+* PC A sends the Ethernet frame to the router.
+* The router forwards the packet toward the destination.
+
+---
+
+# Broadcast MAC Address
+
+Every Ethernet broadcast uses:
+
+```
+FF:FF:FF:FF:FF:FF
+```
+
+Every device in the LAN receives the frame, but only the intended recipient replies.
+
+---
+
+# Broadcast vs Unicast
+
+| Broadcast                           | Unicast                           |
+| ----------------------------------- | --------------------------------- |
+| Sent to all devices                 | Sent to one device                |
+| ARP Request                         | ARP Reply                         |
+| Destination MAC = FF:FF:FF:FF:FF:FF | Destination MAC = Specific Device |
+
+---
+
+# Example
+
+Computer A
+
+```
+IP  : 192.168.0.10
+MAC : AA-AA-AA-AA-AA-AA
+```
+
+Computer B
+
+```
+IP  : 192.168.0.20
+MAC : BB-BB-BB-BB-BB-BB
+```
+
+### ARP Request
+
+```
+Who has 192.168.0.20?
+```
+
+### ARP Reply
+
+```
+192.168.0.20 is at
+
+BB-BB-BB-BB-BB-BB
+```
+
+Now communication can begin.
+
+---
+
+# Viewing the ARP Table
+
+### Windows
+
+```cmd
+arp -a
+```
+
+### Linux
+
+```bash
+ip neigh
+```
+
+or
+
+```bash
+arp -n
+```
+
+---
+
+# Advantages
+
+* Automatic MAC address discovery
+* Faster communication using ARP Cache
+* Requires no manual configuration
+* Essential for Ethernet communication
+
+---
+
+# Limitations
+
+* Works only with IPv4
+* Broadcast traffic increases with larger LANs
+* Cannot cross routers
+* Vulnerable to ARP Spoofing attacks
+
+---
+
+# Cybersecurity Note – ARP Spoofing
+
+**ARP Spoofing (ARP Poisoning)** is a Layer 2 attack where an attacker sends forged ARP replies.
+
+Victims incorrectly associate:
+
+```
+Gateway IP
+
+↓
+
+Attacker MAC Address
+```
+
+As a result, network traffic passes through the attacker, enabling **Man-in-the-Middle (MITM)** attacks.
+
+### Prevention
+
+* Static ARP Entries (where practical)
+* Dynamic ARP Inspection (DAI)
+* Port Security
+* VLAN Segmentation
+* Use encrypted protocols such as HTTPS and SSH
+
+---
+
+# Quick Revision
+
+* ARP = IP Address → MAC Address resolution
+* Works only within a Local Area Network (LAN)
+* ARP Request = Broadcast
+* ARP Reply = Unicast
+* Broadcast MAC Address = `FF:FF:FF:FF:FF:FF`
+* ARP Cache stores recently learned MAC addresses
+* Routers do not forward ARP broadcasts
+* Different network → ARP for the Default Gateway
+* IPv6 uses **Neighbor Discovery Protocol (NDP)** instead of ARP
+* ARP Spoofing is a common Layer 2 attack
+
+---
+
+# Interview Questions
+
+1. What is ARP, and why is it needed?
+2. What is the difference between an IP address and a MAC address?
+3. Why is an ARP Request a broadcast while an ARP Reply is a unicast?
+4. What is an ARP Cache?
+5. Can ARP work across different networks? Why or why not?
+6. What is the broadcast MAC address used in ARP?
+7. What is ARP Spoofing, and how can it be prevented?
+8. Which protocol replaces ARP in IPv6?
+9. Which commands display the ARP table in Windows and Linux?
+10. Why does a host ARP for the Default Gateway when sending data to another network?
