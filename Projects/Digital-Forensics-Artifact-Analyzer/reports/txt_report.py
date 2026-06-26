@@ -77,6 +77,36 @@ def print_report(results,threshold,top_n):
             f"{event['ip']}"
             ) 
     print()
+    print("=" * 45)
+    print(" THREAT ASSESSMENT ")
+    print("=" * 45)
+
+    print("\n🔴 HIGH PRIORITY")
+    print("-" * 30)
+
+    if results["threat"]["high"]:
+        for ip in results["threat"]["high"]:
+            print(ip)
+    else:
+        print("None")
+
+    print("\n🟠 MEDIUM PRIORITY")
+    print("-" * 30)
+
+    if results["threat"]["medium"]:
+        for ip in results["threat"]["medium"]:
+            print(ip)
+    else:
+        print("None")
+
+    print("\n🟢 LOW PRIORITY")
+    print("-" * 30)
+
+    if results["threat"]["low"]:
+        for ip in results["threat"]["low"]:
+            print(ip)
+    else:
+        print("None")
     print("="*30)
     print(" SECURITY ANALYST RECOMMENDATIONS ")
     print("="*30)
@@ -84,6 +114,46 @@ def print_report(results,threshold,top_n):
     print("• Review accounts with successful logins after multiple failures.")
     print("• Enable Multi-Factor Authentication (MFA).")
     print("• Consider blocking repeated offending IP addresses.")
+    print()
+    print("=" * 35)
+    print(" INDICATORS OF COMPROMISE (IOCs) ")
+    print("=" * 35)
+
+    iocs = results["iocs"]
+
+    print("\nSuspicious IP Addresses")
+    print("-" * 30)
+    if iocs["suspicious_ips"]:
+        for ip in iocs["suspicious_ips"]:
+            print(ip)
+    else:
+        print("None")
+
+    print("\nEnumeration IPs")
+    print("-" * 30)
+    if iocs["enumeration_ips"]:
+        for ip in iocs["enumeration_ips"]:
+            print(ip)
+    else:
+        print("None")
+
+    print("\nCompromised Accounts")
+    print("-" * 30)
+    if iocs["compromised_accounts"]:
+        for user in iocs["compromised_accounts"]:
+            print(user)
+    else:
+        print("None")
+
+    print("\nMost Active Attacker")
+    print("-" * 30)
+    if iocs["most_active_attacker"]:
+        print(f"IP Address       : {iocs['most_active_attacker']['ip']}")
+        print(f"Failed Attempts  : {iocs['most_active_attacker']['failed_attempts']}")
+    else:
+        print("None")
+
+    print(f"\nTotal IOCs Found : {iocs['ioc_count']}")
 
 def save_report(results, filename, threshold=5, top_n=3):
 
@@ -207,6 +277,78 @@ def save_report(results, filename, threshold=5, top_n=3):
         file.write("• Enable Multi-Factor Authentication (MFA).\n")
         file.write("• Consider blocking repeated offending IP addresses.\n")
         file.write("\n")
+        
+        file.write("=" * 45 + "\n")
+        file.write(" THREAT ASSESSMENT \n")
+        file.write("=" * 45 + "\n\n")
+
+        file.write("HIGH PRIORITY\n")
+        file.write("-" * 30 + "\n")
+        if results["threat"]["high"]:
+            for ip in results["threat"]["high"]:
+                file.write(f"{ip}\n")
+        else:
+            file.write("None\n")
+
+        file.write("\nMEDIUM PRIORITY\n")
+        file.write("-" * 30 + "\n")
+        if results["threat"]["medium"]:
+            for ip in results["threat"]["medium"]:
+                file.write(f"{ip}\n")
+        else:
+            file.write("None\n")
+
+        file.write("\nLOW PRIORITY\n")
+        file.write("-" * 30 + "\n")
+        if results["threat"]["low"]:
+            for ip in results["threat"]["low"]:
+                file.write(f"{ip}\n")
+        else:
+            file.write("None\n")
+
+
+        iocs = results["iocs"]
+
+        file.write("\n")
+        file.write("=" * 35 + "\n")
+        file.write(" INDICATORS OF COMPROMISE (IOCs) \n")
+        file.write("=" * 35 + "\n\n")
+
+        file.write("Suspicious IP Addresses\n")
+        file.write("-" * 30 + "\n")
+        if iocs["suspicious_ips"]:
+            for ip in iocs["suspicious_ips"]:
+                file.write(f"{ip}\n")
+        else:
+            file.write("None\n")
+
+        file.write("\nEnumeration IPs\n")
+        file.write("-" * 30 + "\n")
+        if iocs["enumeration_ips"]:
+            for ip in iocs["enumeration_ips"]:
+                file.write(f"{ip}\n")
+        else:
+            file.write("None\n")
+
+        file.write("\nCompromised Accounts\n")
+        file.write("-" * 30 + "\n")
+        if iocs["compromised_accounts"]:
+            for user in iocs["compromised_accounts"]:
+                file.write(f"{user}\n")
+        else:
+            file.write("None\n")
+
+        file.write("\nMost Active Attacker\n")
+        file.write("-" * 30 + "\n")
+        if iocs["most_active_attacker"]:
+            file.write(f"IP Address      : {iocs['most_active_attacker']['ip']}\n")
+            file.write(f"Failed Attempts : {iocs['most_active_attacker']['failed_attempts']}\n")
+        else:
+            file.write("None\n")
+
+        file.write(f"\nTotal IOCs Found : {iocs['ioc_count']}\n")
+        
+        
         file.write("\n")
         file.write("=" * WIDTH + "\n")
         file.write("End of Investigation Report".center(WIDTH) + "\n")

@@ -1,0 +1,7 @@
+IP Address,Failed Attempts,Unique Users,Enumeration
+45.10.20.1,17,7,YES
+203.0.113.8,16,6,YES
+10.10.10.5,22,4,YES
+172.16.0.5,11,7,YES
+198.51.100.25,14,7,YES
+203.0.113.55,2,2,NO

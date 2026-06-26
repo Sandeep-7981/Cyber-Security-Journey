@@ -16,8 +16,9 @@ def parse_log(line):
 
     # Username
     match = re.search(r"for (.*?) from", line)
+    
     username = match.group(1) if match else "Unknown"
-
+    username = username.replace("invalid user ", "")
     # IP Address
     ip_match = re.search(r"\d+\.\d+\.\d+\.\d+", line)
     ip = ip_match.group(0) if ip_match else "Unknown"

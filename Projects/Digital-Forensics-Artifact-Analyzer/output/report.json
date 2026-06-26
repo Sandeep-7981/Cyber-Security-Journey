@@ -1,0 +1,132 @@
+{
+    "summary": {
+        "total_lines": 200,
+        "failed_logins": 82,
+        "successful_logins": 118,
+        "unique_failed_ips": 6,
+        "iocs": {
+            "suspicious_ips": [
+                "45.10.20.1",
+                "203.0.113.8",
+                "10.10.10.5",
+                "172.16.0.5",
+                "198.51.100.25"
+            ],
+            "enumeration_ips": [
+                "45.10.20.1",
+                "203.0.113.8",
+                "10.10.10.5",
+                "172.16.0.5",
+                "198.51.100.25"
+            ],
+            "compromised_accounts": [
+                "admin",
+                "john"
+            ],
+            "targeted_accounts": {
+                "backup": 5,
+                "admin": 4,
+                "root": 4,
+                "john": 4,
+                "guest": 3,
+                "dev": 2,
+                "test": 1,
+                "ubuntu": 1,
+                "mysql": 1,
+                "oracle": 1,
+                "ftp": 1,
+                "postgres": 1,
+                "alice": 1,
+                "bob": 1,
+                "mary": 1,
+                "jenkins": 1,
+                "git": 1
+            },
+            "most_active_attacker": {
+                "ip": "10.10.10.5",
+                "failed_attempts": 22
+            },
+            "ioc_count": 12
+        }
+    },
+    "top_failed_attempts": [
+        {
+            "ip": "10.10.10.5",
+            "failed_attempts": 22
+        },
+        {
+            "ip": "45.10.20.1",
+            "failed_attempts": 17
+        },
+        {
+            "ip": "203.0.113.8",
+            "failed_attempts": 16
+        }
+    ],
+    "suspicious_ips": [
+        {
+            "ip": "10.10.10.5",
+            "failed_attempts": 22
+        },
+        {
+            "ip": "45.10.20.1",
+            "failed_attempts": 17
+        },
+        {
+            "ip": "203.0.113.8",
+            "failed_attempts": 16
+        },
+        {
+            "ip": "198.51.100.25",
+            "failed_attempts": 14
+        },
+        {
+            "ip": "172.16.0.5",
+            "failed_attempts": 11
+        }
+    ],
+    "account_compromise_alerts": [
+        {
+            "ip": "45.10.20.1",
+            "username": "admin",
+            "timestamp": "Jun 20 10:17:36"
+        },
+        {
+            "ip": "172.16.0.5",
+            "username": "john",
+            "timestamp": "Jun 20 10:20:23"
+        }
+    ],
+    "recent_timeline": [
+        {
+            "timestamp": "Jun 20 10:29:33",
+            "status": "Successful",
+            "username": "dave",
+            "ip": "192.168.1.23"
+        },
+        {
+            "timestamp": "Jun 20 10:29:39",
+            "status": "Successful",
+            "username": "dave",
+            "ip": "192.168.1.23"
+        },
+        {
+            "timestamp": "Jun 20 10:29:48",
+            "status": "Successful",
+            "username": "bob",
+            "ip": "192.168.1.21"
+        },
+        {
+            "timestamp": "Jun 20 10:30:03",
+            "status": "Successful",
+            "username": "dev",
+            "ip": "10.20.30.40"
+        },
+        {
+            "timestamp": "Jun 20 10:30:12",
+            "status": "Failed",
+            "username": "guest",
+            "ip": "198.51.100.25"
+        }
+    ]
+}

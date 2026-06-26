@@ -1,26 +1,54 @@
-# <h1 align="center">🔍 Digital Forensics Artifact Analyzer</h1>
+# 🛡️ Digital Forensics Artifact Analyzer
 
-<p align="center">
-A Python-based <b>Digital Forensics & Incident Response (DFIR)</b> tool for analyzing Linux SSH authentication logs, detecting suspicious login activity, and generating structured investigation reports.
-</p>
+> **Automated Linux Authentication Log Investigation & Threat Analysis Tool**
 
 <p align="center">
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue)
 ![Version](https://img.shields.io/badge/Version-v1.0-success)
-![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
+![Platform](https://img.shields.io/badge/Platform-Linux-lightgrey)
+![License](https://img.shields.io/badge/License-MIT-green)
 
 </p>
+
+A Python-based **Digital Forensics & Incident Response (DFIR)** tool that automates Linux SSH authentication log analysis, detects suspicious activities, extracts Indicators of Compromise (IOCs), prioritizes threats, and generates professional investigation reports in multiple formats.
+
+---
+
+# 📑 Table of Contents
+
+* [Overview](#-overview)
+* [Quick Start](#-quick-start)
+* [Features](#-features)
+* [Project Highlights](#-project-highlights)
+* [Architecture](#-architecture)
+* [Project Structure](#-project-structure)
+* [Command Line Options](#-command-line-options)
+* [Investigation Report](#-investigation-report)
+* [Screenshots](#-screenshots)
+* [Technologies Used](#-technologies-used)
+* [Skills Demonstrated](#-skills-demonstrated)
+* [Future Improvements](#-future-improvements)
+* [License](#-license)
+* [Author](#-author)
 
 ---
 
 # 📖 Overview
 
-Digital Forensics Artifact Analyzer is a modular command-line tool designed to automate the analysis of Linux SSH authentication logs.
+Digital Forensics Artifact Analyzer is a modular Python-based DFIR tool that automates the investigation of Linux SSH authentication logs.
 
-Instead of manually reviewing hundreds of log entries, the tool extracts authentication events, identifies suspicious patterns such as brute-force attacks and username enumeration attempts, correlates security events, and generates a structured investigation report with actionable security recommendations.
+Instead of manually reviewing hundreds of authentication events, the analyzer parses authentication logs, detects suspicious login activity, identifies brute-force attacks, extracts Indicators of Compromise (IOCs), classifies threat severity, and generates structured investigation reports.
 
-This project was developed to demonstrate practical Python programming, Digital Forensics & Incident Response (DFIR), log analysis, and cybersecurity automation concepts.
+The project demonstrates practical applications of:
+
+* Python Automation
+* Linux Log Analysis
+* Digital Forensics
+* Incident Response
+* Threat Detection
+* Security Automation
 
 ---
 
@@ -29,48 +57,46 @@ This project was developed to demonstrate practical Python programming, Digital 
 ## Clone the Repository
 
 ```bash
-git clone https://github.com/<your-github-username>/Digital-Forensics-Artifact-Analyzer.git
+git clone https://github.com/sandeep-7981/Digital-Forensics-Artifact-Analyzer.git
+
 cd Digital-Forensics-Artifact-Analyzer
 ```
 
-## Run the Application
+## Run the Analyzer
 
 ```bash
-python main.py <log_file_path>
+python main.py samples/auth.log
 ```
 
-### Basic Example
+Generate HTML Dashboard
 
 ```bash
-python main.py sample_logs/sample_auth.log
+python main.py samples/auth.log --html
 ```
 
-### Optional Arguments
-
-| Argument      | Description                                                   |
-| ------------- | ------------------------------------------------------------- |
-| `--threshold` | Minimum failed login attempts to classify an IP as suspicious |
-| `--top_n`     | Number of top failed IP addresses displayed                   |
-| `--savefile`  | Output path for the generated investigation report            |
-
-### Example
+Generate JSON Report
 
 ```bash
-python main.py sample_logs/sample_auth.log \
-    --threshold 5 \
-    --top_n 3 \
-    --savefile reports/investigation_report.txt
+python main.py samples/auth.log --json
 ```
 
----
+Generate CSV Report
 
-# 📸 Screenshots
+```bash
+python main.py samples/auth.log --csv
+```
 
-## Console Output
+Generate All Reports
 
-![Console Output](screenshots/screenshot1.png)
+```bash
+python main.py samples/auth.log --html --json --csv
+```
 
-![Console Output](screenshots/screenshot2.png)
+Custom Threshold
+
+```bash
+python main.py samples/auth.log --threshold 5 --top_n 3
+```
 
 ---
 
@@ -78,44 +104,83 @@ python main.py sample_logs/sample_auth.log \
 
 ## 🔐 Authentication Analysis
 
-* ✅ SSH Failed Login Detection
-* ✅ SSH Successful Login Detection
-* ✅ Configurable Suspicious IP Threshold
+* Parse Linux SSH authentication logs
+* Detect successful login attempts
+* Detect failed login attempts
+* Count failed attempts per IP
+* Track unique targeted users
+* Generate chronological authentication timeline
 
-## 🚨 Threat Detection
+### 🚨 Threat Detection
 
-* ✅ Brute Force Attack Detection
-* ✅ Username Enumeration Detection
-* ✅ Success-after-Failure Correlation
+* Brute Force Attack Detection
+* Username Enumeration Detection
+* Success-after-Failure Detection
+* Suspicious IP Detection
+* Compromised Account Detection
 
-## 📊 Investigation & Reporting
+### 📌 Indicators of Compromise (IOC)
 
-* ✅ Structured Log Summary
-* ✅ Top Failed Attempts Analysis
-* ✅ Suspicious IP Identification
-* ✅ Potential Account Compromise Alerts
-* ✅ Recent Event Timeline
-* ✅ Security Analyst Recommendations
-* ✅ Automated Investigation Report Generation
+* Suspicious IP Extraction
+* Enumeration IP Detection
+* Compromised Account Identification
+* Most Active Attacker Detection
+* IOC Count Summary
+
+### ⚠️ Threat Assessment
+
+Automatically categorizes malicious activity into:
+
+* 🔴 High Priority
+* 🟠 Medium Priority
+* 🟢 Low Priority
+
+### 📄 Report Generation
+
+Generate investigation reports in:
+
+* TXT
+* HTML Dashboard
+* JSON
+* CSV
+
+---
+
+# 📊 Project Highlights
+
+| Metric                          |  Value |
+| ------------------------------- | -----: |
+| Authentication Events Processed |   200+ |
+| Report Formats                  |      4 |
+| Threat Levels                   |      3 |
+| IOC Types                       |      5 |
+| Detection Techniques            |      5 |
+| Programming Language            | Python |
 
 ---
 
 # 🏗️ Architecture
 
 ```text
-                  Authentication Log
-                          │
-                          ▼
-                 parsers/auth_parser.py
-                          │
-                          ▼
-                 analyzers/analyzer.py
-                          │
-                          ▼
-                      report.py
-                          │
-                          ▼
-      Console Output + Investigation Report
+                    Authentication Log
+                            │
+                            ▼
+                 Authentication Parser
+                            │
+                            ▼
+                    Detection Engine
+                            │
+             ┌──────────────┼──────────────┐
+             ▼              ▼              ▼
+      IOC Extraction   Event Timeline   Threat Assessment
+             │              │              │
+             └──────────────┼──────────────┘
+                            │
+                            ▼
+                   Report Generation
+             ┌────────┬────────┬────────┬────────┐
+             ▼        ▼        ▼        ▼
+            TXT      HTML     JSON      CSV
 ```
 
 ---
@@ -125,21 +190,30 @@ python main.py sample_logs/sample_auth.log \
 ```text
 Digital-Forensics-Artifact-Analyzer/
 
-├── analyzers/
-│   └── analyzer.py
+├── analyzer/
+│   ├── detection.py
+│   ├── ioc.py
+│   └── threat.py
 │
 ├── parsers/
 │   └── auth_parser.py
 │
 ├── reports/
+│   ├── txt_report.py
+│   ├── html_report.py
+│   ├── html_sections.py
+│   ├── html_styles.py
+│   ├── json_report.py
+│   └── csv_report.py
 │
-├── sample_logs/
+├── output/
+│
+├── samples/
+│   ├── auth.log
+│   └── auth_test_200.log
 │
 ├── screenshots/
-│   ├── screenshot1.png
-│   └── screenshot2.png
 │
-├── report.py
 ├── main.py
 ├── README.md
 └── requirements.txt
@@ -147,109 +221,139 @@ Digital-Forensics-Artifact-Analyzer/
 
 ---
 
-# 🛠️ Technologies Used
+# ⚙️ Command Line Options
 
-* Python 3
-* Regular Expressions (`re`)
-* File Handling
-* Dictionaries
-* Sets
-* Command-Line Arguments (`argparse`)
-* Modular Programming
-
----
-
-# 📊 Detection Capabilities
-
-| Capability                        | Status |
-| --------------------------------- | :----: |
-| SSH Failed Login Detection        |    ✅   |
-| SSH Successful Login Detection    |    ✅   |
-| Suspicious IP Analysis            |    ✅   |
-| Brute Force Detection             |    ✅   |
-| Username Enumeration Detection    |    ✅   |
-| Success-after-Failure Correlation |    ✅   |
-| Event Timeline Reconstruction     |    ✅   |
-| Investigation Report Generation   |    ✅   |
-| Security Analyst Recommendations  |    ✅   |
+| Argument      | Description                                       |
+| ------------- | ------------------------------------------------- |
+| `--threshold` | Failed login threshold to classify suspicious IPs |
+| `--top_n`     | Number of top failed IPs displayed                |
+| `--savefile`  | Output TXT report path                            |
+| `--html`      | Generate HTML dashboard                           |
+| `--json`      | Generate JSON report                              |
+| `--csv`       | Generate CSV report                               |
 
 ---
 
-# 📋 Investigation Report
+# 📄 Investigation Report
 
-The generated investigation report includes:
+The analyzer automatically generates reports containing:
 
-* Suspicious Failed Login Analysis
-* Log Summary
+* Authentication Summary
+* Failed Login Analysis
 * Top Failed Attempts
 * Suspicious IP Analysis
 * Potential Account Compromise Alerts
-* Recent Event Timeline (Latest 5 Events)
+* Recent Event Timeline
+* Indicators of Compromise (IOC)
+* Threat Assessment
 * Security Analyst Recommendations
+
+---
+
+# 📸 Screenshots
+
+## 🌐 HTML Dashboard
+
+<p align="center">
+  <img src="screenshots/html1.png" width="95%">
+</p>
+
+
+
+<p align="center">
+  <img src="screenshots/html2.png" width="95%">
+</p>
+<p align="center">
+  <img src="screenshots/html3.png" width="95%">
+</p>
+<p align="center">
+  <img src="screenshots/html4.png" width="95%">
+</p>
+---
+
+## 🖥️ Console Report
+
+<p align="center">
+  <img src="screenshots/out1.png" width="95%">
+</p>
+
+
+
+<p align="center">
+  <img src="screenshots/out2.png" width="95%">
+</p>
+
+
+
+<p align="center">
+  <img src="screenshots/out3.png" width="95%">
+</p>
+
+---
+
+
+
+# 🛠️ Technologies Used
+
+* Python 3
+* HTML
+* CSS
+* JSON
+* CSV
+* argparse
+* collections
+* datetime
+* os
+* Regular Expressions (`re`)
 
 ---
 
 # 🎯 Skills Demonstrated
 
-This project demonstrates practical experience in:
-
-* Python Automation
-* Digital Forensics Fundamentals
-* Linux SSH Authentication Log Analysis
-* Incident Investigation
+* Python Programming
+* Digital Forensics
+* Incident Response
+* Linux Authentication Log Analysis
 * Security Event Correlation
-* Threat Detection Logic
+* Threat Detection
+* IOC Extraction
+* Threat Prioritization
 * Report Generation
-* Command-Line Tool Development
+* CLI Development
 * Modular Software Design
 
 ---
 
-# 🔮 Roadmap
+# 🔮 Future Improvements
 
-* [ ] Multi-parser architecture
-* [ ] Sudo log parser
-* [ ] CRON log parser
-* [ ] Apache/Nginx log parser
-* [ ] JSON / CSV / PDF report export
-* [ ] IP reputation enrichment
-* [ ] Interactive dashboard
+* PDF Report Export
+* Real-Time Log Monitoring
+* Threat Intelligence Integration
+* IP Reputation Enrichment
+* Multi-Log Support
+* Web Dashboard
+* Docker Deployment
 
 ---
 
-# 💡 Sample Workflow
+# 📜 License
 
-```text
-Authentication Log
-        │
-        ▼
-Log Parsing
-        │
-        ▼
-Threat Detection
-        │
-        ├── Failed Login Analysis
-        ├── Brute Force Detection
-        ├── Username Enumeration
-        └── Success-after-Failure Correlation
-        │
-        ▼
-Timeline Reconstruction
-        │
-        ▼
-Investigation Report Generation
-```
+This project is licensed under the **MIT License**.
 
 ---
 
 # 👨‍💻 Author
 
-## Sandeep B
+## **B V V Sandeep**
 
-**Cybersecurity | Cloud Security | Digital Forensics Enthusiast**
+**Cybersecurity • Cloud Security • Digital Forensics Enthusiast**
 
-Built as a portfolio project to demonstrate practical cybersecurity, Python automation, and Digital Forensics & Incident Response (DFIR) concepts.
+Built as a portfolio project to demonstrate practical applications of Python automation, Digital Forensics & Incident Response (DFIR), and cybersecurity analytics.
 
 ---
 
-⭐ **If you found this project useful, consider giving it a star!**
+<p align="center">
+
+⭐ If you found this project useful, consider giving it a ⭐ on GitHub!
+
+</p>
