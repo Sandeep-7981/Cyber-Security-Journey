@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.vscode/
+.idea/
+
+output/
+reports/*.txt
+
+.env
+
+.DS_Store
+desktop.ini

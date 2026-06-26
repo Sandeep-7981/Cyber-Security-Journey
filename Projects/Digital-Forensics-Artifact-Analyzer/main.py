@@ -1,6 +1,6 @@
 import argparse
-from analyzer import analyze_log   #Importing from other folders
-from report_generator import print_report,save_report
+from analyzer.detection import analyze_log   #Importing from other folders
+from reports.txt_report import print_report,save_report
 
 
 parser = argparse.ArgumentParser(
