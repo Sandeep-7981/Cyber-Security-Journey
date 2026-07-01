@@ -112,9 +112,9 @@ Level XX
 |    09 |    ✅   |
 |    10 |    ✅   |
 |    11 |    ✅   |
-|    12 |    ⬜   |
-|    13 |    ⬜   |
-|    14 |    ⬜   |
+|    12 |    ✅   |
+|    13 |    ✅   |
+|    14 |    ✅   |
 |   ... |   ...  |
 
 > This table will be updated as I continue my journey.
