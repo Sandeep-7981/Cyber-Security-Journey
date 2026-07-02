@@ -1,215 +1,171 @@
 # 🛡️ Cyber Security Journey
 
-> A public repository documenting my hands-on journey into Cyber Security, Cloud Security, Digital Forensics, and Security Automation.
+<div align="center">
+
+### Learn • Build • Break • Document • Improve
+
+*A public repository documenting my hands-on journey through Cyber Security, Cloud Security, Digital Forensics, Networking, and Security Automation.*
+
+</div>
 
 ---
 
-## 👋 About
+# 👋 About
 
-Hi, I'm **Sandeep B**.
+Hi! I'm **Sandeep B**, a Computer Science student passionate about Cyber Security.
 
-This repository serves as my personal cybersecurity learning journal where I document:
+This repository is my personal learning portfolio where I document everything I learn through practical experience rather than simply collecting certificates.
 
-- 📚 Concepts I learn
-- 🔐 Security labs I complete
-- 💻 Python automation scripts
-- ☁️ Cloud security practice
-- 🕵️ Digital Forensics projects
-- 🏠 Home SOC experiments
-
-Instead of only collecting certificates, I believe in **learning by building**.
+Here you'll find notes, labs, projects, automation scripts, write-ups, and experiments that reflect my growth as I work toward becoming a Security Engineer.
 
 ---
 
-# 🎯 Goals
+# 🎯 Purpose
 
-- Learn Cyber Security Fundamentals
-- Build practical Python security tools
-- Complete hands-on labs
-- Understand Cloud Security concepts
-- Explore Digital Forensics & Incident Response (DFIR)
-- Develop projects for a security portfolio
+This repository exists to:
+
+- 📚 Document cybersecurity concepts
+- 🛠️ Build practical security projects
+- 🔐 Practice ethical hacking labs
+- ☁️ Explore cloud security
+- 🕵️ Learn digital forensics
+- 🐍 Develop Python automation tools
+- 🌐 Strengthen networking fundamentals
+- 📝 Maintain organized technical notes
+
+Everything here represents my actual learning process.
 
 ---
 
-# 🗂 Repository Structure
+# 📂 Repository Overview
 
+```text
+Cyber-Security-Journey
+│
+├── ☁️ AWS
+│
+├── 🕵️ Digital-Forensics
+│
+├── 🐧 Linux
+│
+├── 🌐 Networking
+│
+├── 🐍 Python-Automation
+│
+├── 🧩 TryHackMe
+│
+├── ⚔️ Natas
+│
+└── 📄 README.md
 ```
-Cyber-Security-Journey/
-│
-├── Python/
-│   ├── Log_Analyzer/
-│   ├── Automation/
-│   └── Practice/
-│
-├── Linux/
-│
-├── Networking/
-│
-├── AWS/
-│
-├── TryHackMe/
-│
-├── Digital_Forensics/
-│
-├── Notes/
-│
-└── README.md
-```
+
+Each directory focuses on a different area of cybersecurity and contains notes, projects, labs, or automation scripts related to that topic.
 
 ---
 
-# 🚀 Current Projects
+# 🚀 What's Inside
 
-## 🔐 Digital Forensics Artifact Analyzer
+## 🐍 Python Automation
 
-A Python-based authentication log analyzer that:
-
-- Parses Linux auth logs
-- Detects failed and successful logins
-- Generates security reports
-- Identifies suspicious IP addresses
-- Ranks top failed login sources
-
-**Status:** ✅ Active Development
+Python scripts built to automate security-related tasks, including log analysis, parsing, reporting, and other cybersecurity utilities.
 
 ---
 
-# 📚 Learning Roadmap
+## 🕵️ Digital Forensics
 
-## Python
-
-- [x] Variables & Data Types
-- [x] Loops
-- [x] Functions
-- [x] Dictionaries
-- [x] File Handling
-- [x] Regular Expressions
-- [x] Lambda Functions
-- [x] Sorting & Data Processing
-- [ ] OOP
-- [ ] Multithreading
+Notes, projects, and tools focused on digital forensics, log analysis, artifact investigation, and incident response concepts.
 
 ---
 
-## Linux
+## 🌐 Networking
 
-- [x] Basic Commands
-- [x] File Permissions
-- [x] Users & Groups
-- [ ] System Logs
-- [ ] Bash Scripting
+Networking fundamentals, Cisco notes, Packet Tracer labs, OSINT resources, and networking-related projects.
 
 ---
 
-## Networking
+## 🐧 Linux
 
-- [x] OSI Model
-- [x] TCP/IP
-- [x] IPv4 Addressing
-- [x] Public vs Private IP
-- [ ] Routing
-- [ ] DNS
+Linux commands, concepts, system administration basics, and security-focused notes.
 
 ---
 
-## Cloud Security (AWS)
+## ☁️ AWS
 
-- [x] Cloud Fundamentals
-- [x] IAM Basics
-- [x] Principle of Least Privilege
-- [ ] EC2
-- [ ] S3
-- [ ] VPC
+Cloud computing and cloud security concepts, IAM, networking, and AWS learning resources.
 
 ---
 
-## Digital Forensics
+## 🧩 TryHackMe
 
-- [x] Authentication Log Analysis
-- [x] IP Extraction
-- [x] Suspicious Login Detection
-- [ ] Timeline Analysis
-- [ ] Artifact Collection
-- [ ] Memory Analysis
+Learning notes and write-ups from TryHackMe rooms covering various cybersecurity topics.
 
 ---
 
-## TryHackMe / Labs
+## ⚔️ OverTheWire – Natas
 
-- [x] Linux Fundamentals
-- [x] Leviathan Level 1
-- [ ] SOC Level Labs
-- [ ] DFIR Labs
+Write-ups and notes from the Natas wargame focused on web security, exploitation techniques, and vulnerability analysis.
 
 ---
 
-# 🛠 Technologies
+# 🛠️ Technologies & Tools
 
 - Python
 - Linux
 - Git & GitHub
-- Regular Expressions
 - AWS
 - Networking Fundamentals
+- Cisco Packet Tracer
+- Burp Suite
+- Wireshark
+- Nmap
+- Regular Expressions
 
 ---
 
-# 📈 Current Focus
+# 💡 Learning Philosophy
 
-```
-Python
-    │
-    ▼
-Automation
-    │
-    ▼
-Log Analysis
-    │
-    ▼
-Digital Forensics
-    │
-    ▼
-Cloud Security
-```
+I believe the best way to learn cybersecurity is by building things.
+
+Instead of only completing courses, I focus on:
+
+- Understanding concepts
+- Practicing through labs
+- Building projects
+- Writing notes
+- Automating repetitive tasks
+- Documenting everything I learn
+
+> **Learn → Build → Break → Fix → Document → Repeat**
 
 ---
 
-# 💡 Philosophy
+# 🚧 Future Additions
 
-> Learn → Build → Break → Fix → Document → Repeat
+As this journey continues, this repository will grow with:
 
-This repository is intentionally built in public so that every project reflects my actual learning process rather than copied solutions.
-
----
-
-# 🔮 Upcoming Projects
-
-- [ ] Digital Forensics Artifact Analyzer v2
-- [ ] Home SOC Lab
-- [ ] Network Log Analyzer
-- [ ] Packet Analyzer
-- [ ] IOC Extractor
-- [ ] AWS Security Automation
-- [ ] Incident Response Toolkit
+- Security automation tools
+- Digital forensics projects
+- Cloud security labs
+- Network analysis utilities
+- Incident response tools
+- Python mini-projects
+- Additional lab write-ups
+- Home lab experiments
 
 ---
 
-# 📊 Progress
+# 🤝 Contributions
 
-- 🔐 Cyber Security Fundamentals
-- ☁️ Cloud Security
-- 🕵️ Digital Forensics
-- 🐍 Python Automation
+This repository is primarily a personal learning journal, but suggestions, feedback, and discussions are always welcome.
 
-Every commit in this repository represents a step toward becoming a Security Engineer / DFIR / Cloud Security professional.
+If you're also learning cybersecurity, feel free to explore the repository and learn alongside me.
 
 ---
 
-# 🤝 Connect
+<div align="center">
 
-If you're also learning cybersecurity, feel free to explore the projects, suggest improvements, or follow along as I continue building practical security tools.
+### ⭐ Thanks for visiting!
 
----
+*"Consistency over intensity. One concept, one lab, one project at a time."*
 
-⭐ **"Consistency over intensity. One project, one lab, one concept at a time."**
+</div>
