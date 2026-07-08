@@ -1,362 +1,388 @@
-# Module 14 - Routing Between Networks
+# 🌐 14. Routing Between Networks
 
-## What is Routing?
+## 📖 Definition
 
-**Routing** is the process of forwarding packets from one network to another using a **router**.
+**Routing** is the process of selecting the best path for data packets to travel from one network to another.
 
-A router examines the destination IP address of a packet and decides the best path to forward it.
+**Simple:** Routing allows devices from different networks to communicate with each other.
 
-> **Routing works at Layer 3 (Network Layer) of the OSI Model.**
+Routers act like traffic managers that decide where packets should go.
 
 ---
 
-# Why is Routing Needed?
+# 📌 1. Need for Routing
 
-Devices in the **same network** can communicate directly using switches and ARP.
+### Definition
 
-However, if two devices belong to **different networks**, they cannot communicate directly.
-
-A **router** is required to forward packets between networks.
+Devices in the same network can communicate directly, but communication between different networks requires routing.
 
 ### Example
 
-```text
-Network 1                    Network 2
+A laptop accessing a website:
 
-PC A ----- Switch ----- Router ----- Switch ----- PC B
-
-192.168.1.10                               192.168.2.20
+```
+Laptop
+   │
+Home Router
+   │
+ISP Router
+   │
+Internet
+   │
+Website Server
 ```
 
-Since the two PCs are on different networks, the packet must pass through the router.
+### Why Routing is Needed?
+
+- Connects different networks
+- Enables Internet communication
+- Selects the best path
+- Allows large networks to work together
 
 ---
 
-# The Need for Routing
+# 📌 2. Router
 
-Routing is required when:
+### Definition
 
-* Communicating with another subnet
-* Accessing the Internet
-* Connecting multiple LANs
-* Allowing different departments in an organization to communicate
-* Connecting branch offices
+A **Router** is a Layer 3 networking device that connects multiple networks and forwards packets using IP addresses.
 
-Without routing, communication is limited to a single local network.
+### Functions
+
+- Connect different networks
+- Forward packets
+- Maintain routing information
+- Choose best routes
+
+### Example
+
+```
+Network A
+
+PC1 ── Switch
+          │
+        Router
+          │
+PC2 ── Switch
+
+Network B
+```
 
 ---
 
-# What is a Router?
+# 📌 3. Routing Table
 
-A **Router** is a Layer 3 networking device that connects multiple networks.
+### Definition
 
-Functions of a router:
+A **Routing Table** stores information about available network paths.
 
-* Connects different networks
-* Forwards IP packets
-* Maintains a Routing Table
-* Selects the best path
-* Acts as the Default Gateway for hosts
+Routers use this table to decide where packets should be sent.
 
----
+### Routing Table Contains:
 
-# Default Gateway
-
-A **Default Gateway** is the router interface that a host uses when the destination is outside its local network.
+- Destination Network
+- Next Hop Address
+- Interface
+- Metric
 
 Example:
 
-| Device          | IP Address   |
-| --------------- | ------------ |
-| PC              | 192.168.1.10 |
-| Default Gateway | 192.168.1.1  |
-
-When sending data to another network, the PC forwards the packet to the Default Gateway.
+| Destination Network | Next Hop |
+|--------------------|----------|
+| 192.168.1.0/24 | Directly Connected |
+| 10.0.0.0/8 | 192.168.1.1 |
 
 ---
 
-# The Routing Table
+# 📌 4. Default Gateway
 
-Every router maintains a **Routing Table**.
+### Definition
 
-The routing table tells the router where packets should be forwarded.
+A **Default Gateway** forwards traffic from a local network to another network.
 
-Typical entries include:
-
-* Destination Network
-* Subnet Mask
-* Next Hop
-* Outgoing Interface
-* Metric
+Usually, a router works as the default gateway.
 
 Example:
 
-| Destination Network | Next Hop           | Interface |
-| ------------------- | ------------------ | --------- |
-| 192.168.1.0/24      | Directly Connected | G0/0      |
-| 192.168.2.0/24      | Directly Connected | G0/1      |
-| 0.0.0.0/0           | ISP Router         | G0/2      |
-
----
-
-# How Routing Works
-
-Suppose:
-
-```text
-PC A
-IP: 192.168.1.10
-
-↓
-
-Destination:
-192.168.2.20
 ```
+Computer
+192.168.1.20
 
-### Step 1
+     │
 
-PC A checks whether the destination belongs to the same network.
-
-Result:
-
-```text
-No
-```
-
----
-
-### Step 2
-
-PC A sends the Ethernet frame to the **Default Gateway**.
-
-Destination MAC = Router's MAC
-
-Destination IP = 192.168.2.20
-
----
-
-### Step 3
-
-The router receives the packet.
-
-It examines:
-
-```text
-Destination IP Address
-```
-
----
-
-### Step 4
-
-The router searches its Routing Table.
-
-If a matching route exists,
-
-the packet is forwarded through the correct interface.
-
----
-
-### Step 5
-
-The destination device receives the packet.
-
-Communication is successful.
-
----
-
-# Directly Connected Networks
-
-When an interface is configured with an IP address, the connected network is automatically added to the routing table.
-
-Example:
-
-```text
 Router
+192.168.1.1
 
-G0/0 → 192.168.1.1/24
+     │
 
-G0/1 → 192.168.2.1/24
+Internet
 ```
 
-The router automatically knows both networks.
+Here:
 
-No manual configuration is required.
+```
+192.168.1.1 = Default Gateway
+```
 
 ---
 
-# Static Routing
+# 📌 5. Packet Forwarding Process
 
-A **Static Route** is manually configured by the network administrator.
+### Steps
 
-Advantages:
+1. Source device creates packet
+2. Checks destination IP address
+3. Sends packet to default gateway
+4. Router checks routing table
+5. Packet moves to destination network
 
-* Simple
-* Secure
-* Predictable
+Flow:
 
-Disadvantages:
+```
+Source Device
+      │
+      ↓
+Default Gateway
+      │
+      ↓
+Router
+      │
+      ↓
+Destination Network
+```
 
-* Doesn't adapt automatically
-* Difficult to manage in large networks
+---
 
-Example (Cisco IOS):
+# 📌 6. Types of Routing
+
+## Static Routing
+
+### Definition
+
+Routes are manually added by network administrators.
+
+### Advantages
+
+- More control
+- Secure
+- Uses fewer resources
+
+### Disadvantages
+
+- Difficult for large networks
+- Manual configuration required
+
+---
+
+## Dynamic Routing
+
+### Definition
+
+Routers automatically learn routes using routing protocols.
+
+### Examples
+
+- RIP
+- OSPF
+- EIGRP
+- BGP
+
+### Advantages
+
+- Automatic updates
+- Good for large networks
+- Finds alternate paths
+
+### Disadvantages
+
+- More complex
+- Uses more resources
+
+---
+
+# 📌 7. Routing Protocols
+
+| Protocol | Used For |
+|---------|----------|
+| RIP | Small networks |
+| OSPF | Enterprise networks |
+| EIGRP | Cisco networks |
+| BGP | Internet routing |
+
+---
+
+# 🔐 Cyber Security Perspective
+
+Attackers may target routing through:
+
+- Route hijacking
+- Man-in-the-middle attacks
+- Fake route advertisements
+- Routing table manipulation
+
+### Protection Methods
+
+- Secure router passwords
+- Monitor route changes
+- Use authentication
+- Update router firmware
+- Restrict router access
+
+---
+
+# 📝 Real-Life Example
+
+Opening a website:
+
+```
+Your Laptop
+      │
+Wi-Fi Router
+      │
+ISP Router
+      │
+Internet Routers
+      │
+Website Server
+```
+
+Each router decides the next path until the packet reaches its destination.
+
+---
+
+# 🧠 Memory Trick
+
+Router Functions:
+
+```
+C F S
+```
+
+**Connect → Forward → Select**
+
+- Connect networks
+- Forward packets
+- Select best route
+
+---
+
+# 💻 Useful Commands
+
+## Windows
+
+Check IP and gateway:
 
 ```bash
-ip route 192.168.3.0 255.255.255.0 192.168.2.2
+ipconfig
+```
+
+View routing table:
+
+```bash
+route print
 ```
 
 ---
 
-# Dynamic Routing
+## Linux
 
-Dynamic routing allows routers to exchange routing information automatically.
+View routes:
 
-Common routing protocols:
-
-* RIP
-* OSPF
-* EIGRP
-* IS-IS
-* BGP
-
-Advantages:
-
-* Automatic updates
-* Scalable
-* Best path selection
-
-Disadvantages:
-
-* Uses CPU and memory
-* More complex than static routing
-
----
-
-# Static vs Dynamic Routing
-
-| Static Routing       | Dynamic Routing        |
-| -------------------- | ---------------------- |
-| Manual               | Automatic              |
-| Small networks       | Large networks         |
-| No protocol required | Uses routing protocols |
-| Simple               | More complex           |
-
----
-
-# Routing Decision
-
-When a router receives a packet:
-
-1. Reads the destination IP
-2. Searches the routing table
-3. Finds the best matching route
-4. Forwards the packet
-5. Drops the packet if no valid route exists
-
----
-
-# Longest Prefix Match
-
-If multiple routes match a destination, the router selects the route with the **longest prefix (most specific subnet mask).**
-
-Example:
-
-```text
-192.168.0.0/16
-
-192.168.1.0/24
+```bash
+ip route
 ```
 
-For destination:
+Trace packet path:
 
-```text
-192.168.1.50
+```bash
+traceroute google.com
 ```
 
-The router chooses:
+---
 
-```text
-192.168.1.0/24
+## Cisco Router
+
+Show routing table:
+
+```bash
+show ip route
 ```
 
-because it is more specific.
+Show interfaces:
 
----
-
-# Packet Journey
-
-```text
-PC A
-
-↓
-
-Switch
-
-↓
-
-Router
-
-↓
-
-Switch
-
-↓
-
-PC B
+```bash
+show interfaces
 ```
 
-Only routers move packets between different networks.
+---
+
+# 🎤 Interview Q&A
+
+## Q1. What is Routing?
+
+**Answer:**
+
+Routing is the process of forwarding data packets between different networks using routers.
 
 ---
 
-# Routing vs Switching
+## Q2. Difference between Router and Switch?
 
-| Routing                     | Switching                        |
-| --------------------------- | -------------------------------- |
-| Layer 3                     | Layer 2                          |
-| Uses IP Addresses           | Uses MAC Addresses               |
-| Connects Different Networks | Connects Devices in Same Network |
-| Uses Routing Table          | Uses MAC Address Table           |
-
----
-
-# Cybersecurity Note
-
-Routers improve network security by:
-
-* Separating broadcast domains
-* Controlling traffic flow
-* Using Access Control Lists (ACLs)
-* Supporting firewalls
-* Preventing unauthorized access between networks
-
-Misconfigured routes can expose sensitive internal networks.
+| Switch | Router |
+|------|------|
+| Connects devices in same network | Connects different networks |
+| Uses MAC address | Uses IP address |
+| Layer 2 device | Layer 3 device |
 
 ---
 
-# Quick Revision
+## Q3. What is a Routing Table?
 
-* Routing forwards packets between different networks.
-* Routers operate at Layer 3.
-* Routers use Routing Tables.
-* The Default Gateway is used to reach remote networks.
-* Static routes are manually configured.
-* Dynamic routes are learned automatically.
-* Routers use the **Longest Prefix Match** rule.
-* Switching works within a LAN, while routing connects different networks.
+**Answer:**
+
+A routing table stores network paths used by routers to decide packet forwarding.
 
 ---
 
-# Interview Questions
+## Q4. What is Default Gateway?
 
-1. What is routing?
-2. Why is routing required?
-3. What is a router?
-4. What is the purpose of a routing table?
-5. What is a default gateway?
-6. Differentiate between routing and switching.
-7. What is the difference between static and dynamic routing?
-8. Name four dynamic routing protocols.
-9. What is the Longest Prefix Match rule?
-10. At which OSI layer does routing operate?
+**Answer:**
+
+A default gateway is a router that forwards traffic from a local network to outside networks.
+
+---
+
+## Q5. Which protocol is used for Internet routing?
+
+**Answer:**
+
+BGP (Border Gateway Protocol) is used for routing between Internet networks.
+
+---
+
+# ⚡ Quick Revision
+
+- Routing connects different networks
+- Router works at OSI Layer 3
+- Routers use IP addresses
+- Routing tables store paths
+- Default gateway connects LAN to external networks
+- Static routing = Manual
+- Dynamic routing = Automatic
+- BGP powers Internet routing
+
+---
+
+# 📌 Exam Tips
+
+✅ Router works at Network Layer (Layer 3)
+
+✅ Switch works at Data Link Layer (Layer 2)
+
+✅ Router uses IP address
+
+✅ Switch uses MAC address
+
+✅ Default gateway is usually your router
+
+✅ BGP is the routing protocol of the Internet
