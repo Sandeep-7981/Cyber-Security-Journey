@@ -8,6 +8,13 @@ Before diving deeper into security tools and cloud platforms, I focused on under
 
 ---
 
+# Certification
+ 
+ ![Cisco Networking Completed](../images/Certificate.png)
+
+# Badge
+ ![Cisco Networking Completed](../images/badge.png)
+
 # 🚀 Learning Path
 
 ## 🧩 Starting With Network Basics
