@@ -61,6 +61,9 @@ Home network → Router → Internet
 Remember:
 **Please Do Not Throw Sausage Pizza Away**
 
+
+![OSI](../images/osi_model.jpg)
+
 ---
 
 # 4. TCP/IP Model
